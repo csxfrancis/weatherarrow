@@ -1,0 +1,66 @@
+{% extends "mainPage/base.html" %}
+{% block body_block %}
+{% load convert %}
+<style>
+#hd {
+  font-size : 40px;
+  background-color : blue;
+}
+.r1 {
+  text-align : center;
+  font-size : 15px;
+  background-color : black;
+  color : cyan;
+
+
+}
+.r2 {
+  text-align : center;
+  font-size : 15px;
+  background-color : cyan;
+  color : black;
+}
+</style>
+
+
+
+<form class="" action= "{% url 'mainPage:todayS' %}" method="get">
+{% csrf_token %}
+<select name = "city">
+<option value = "Dallas">Dallas</option>
+<option value = "New York City">New York City</option>
+<option value = "Houston">Houston</option>
+<option value = "Miami">Miami</option>
+<option value = "Seattle">Seattle</option>
+<option value = "Houston">Houston</option>
+<option value = "Los Angeles">Los Angeles</option>
+</select>
+<button method="get">
+  Submit
+</button>
+
+</form>
+<h1>Current Forecast</h1>
+<table>
+  <th>City</th>
+  <th>Temp</th>
+  <th>Date</th>
+  <th>Time</th>
+  <th>Date Made</th>
+{% for fcast in forecasts %}
+<div class = "container">
+  <tr class = "rx">
+
+<td class = "r1">{{fcast.location}}</td>
+<td class = "r2">{{fcast.high}} degrees </td>
+<td class = "r2">{{fcast.low}} degrees </td>
+<td class = "r1">{{fcast.date|date:"D M d Y"}}</td>
+<td class = "r1">{{fcast.date_made|date:"D M d Y"}}</td>
+
+</tr>
+</div>
+{% endfor %}
+</table>
+
+
+{% endblock %}

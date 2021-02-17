@@ -1,0 +1,118 @@
+{% extends "mainPage/base.html" %}
+{% block body_block %}
+{% load convert %}
+<style>
+th,td {
+  text-align : center;
+}
+#hd {
+  font-size : 40px;
+  background-color : blue;
+}
+.r1 {
+  text-align : center;
+  font-size : 15px;
+
+  color : cyan;
+
+
+}
+.r2 {
+  text-align : center;
+  font-size : 15px;
+
+  color : black;
+}
+.temp {
+  color: black;
+  font-size: 20px;
+  border: 3px solid blue;
+
+}
+.base {
+  text-align : center;
+  width : 800px;
+  padding : 50px;
+}
+</style>
+
+{% if check %}
+
+
+
+<div class = "container base">
+
+  <!--
+  <th>Temp</th>
+  <th>Date Made</th>
+  <th>Temp</th>
+  <th>Date Made</th>
+  <th>Temp</th>
+  -->
+
+{% for key,value in coll.items %}
+
+
+
+
+
+
+    <span  class  = "temp">{{value.0.location}}</span>
+    <span class  = "temp">{{value.0.date|date:"D M d Y"}}</span>
+
+    <br>
+    <table>
+
+      <th>Date Made</th>
+      <th>High/Low</th>
+  {% for x in value %}
+
+<tr>
+<td  class  = "temp">{{x.date_made|date:"D M d Y"}}</td>
+
+<td class  = "temp">{{x.high}} degrees / {{x.low}} degrees</td>
+</tr>
+
+
+  {% endfor %}
+  </table>
+
+
+
+
+
+
+
+
+<br>
+{% endfor %}
+
+</div>
+{% else %}
+<h2>Compare</h2>
+<p>Please use the dropdown below to select the city you would to see the forecast history. Each day will have a list of the previous forecasts.</p>
+{% endif %}
+
+<form class="" action="{% url 'mainPage:history' %}" method="POST">
+  {% csrf_token %}
+<select name = "city">
+<option value = "Dallas">Dallas</option>
+<option value = "New York City">New York City</option>
+<option value = "Houston">Houston</option>
+<option value = "Miami">Miami</option>
+<option value = "Seattle">Seattle</option>
+<option value = "Houston">Houston</option>
+<option value = "Los Angeles">Los Angeles</option>
+</select>
+<button method="get">
+  Submit
+</button>
+
+</form>
+
+
+
+
+
+
+{% endblock %}

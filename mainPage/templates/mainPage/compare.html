@@ -1,0 +1,102 @@
+{% extends "mainPage/base.html" %}
+{% block body_block %}
+{% load convert %}
+<style>
+th,td {
+  text-align : center;
+}
+#hd {
+  font-size : 40px;
+  background-color : blue;
+}
+.r1 {
+  text-align : center;
+  font-size : 15px;
+  background-color : black;
+  color : cyan;
+
+
+}
+.r2 {
+  text-align : center;
+  font-size : 15px;
+  background-color : cyan;
+  color : black;
+}
+</style>
+
+{% if check %}
+
+
+<h1>Forecasts</h1>
+<div class = "container">
+<table>
+  <th>City</th>
+  <th>Date</th>
+  <th>Max</th>
+  <th>Low</th>
+  <th>Date Recorded</th>
+  <th>Max</th>
+  <th>Low</th>
+  <th>Date Recorded</th>
+  <th>Max</th>
+  <th>Low</th>
+  <th>Date Recorded</th>
+
+
+  <!--
+  <th>Temp</th>
+  <th>Date Made</th>
+  <th>Temp</th>
+  <th>Date Made</th>
+  <th>Temp</th>
+  -->
+{% for key,value in coll.items %}
+
+
+
+
+  <tr class = "rx">
+
+    <td class = "r1">{{value.0.location}}</td>
+    <td class = "r1">{{value.0.date|date:"D M d Y"}}</td>
+
+
+  {% for x in value %}
+      <td class = "r2">{{x.high}} degrees </td>
+      <td class = "r2">{{x.low}} degrees </td>
+      <td class = "r1">{{x.date_made|date:"D M d Y"}}</td>
+  {% endfor %}
+</tr>
+</div>
+{% endfor %}
+
+</table>
+{% else %}
+<h2>Compare</h2>
+<p>Please use the dropdown below to select the city you would to see the forecast history. The previous forecasts from each day will be displayed together to give a better view of how the forecast has changed.</p>
+{% endif %}
+
+<form class="" action="{% url 'mainPage:compare' %}" method="POST">
+  {% csrf_token %}
+<select name = "city">
+<option value = "Dallas">Dallas</option>
+<option value = "New York City">New York City</option>
+<option value = "Houston">Houston</option>
+<option value = "Miami">Miami</option>
+<option value = "Seattle">Seattle</option>
+<option value = "Houston">Houston</option>
+<option value = "Los Angeles">Los Angeles</option>
+</select>
+<button method="get">
+  Submit
+</button>
+
+</form>
+
+
+
+
+
+
+{% endblock %}

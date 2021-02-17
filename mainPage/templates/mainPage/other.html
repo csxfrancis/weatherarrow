@@ -1,0 +1,41 @@
+{% extends "mainPage/base.html" %}
+{% block body_block %}
+{% load convert %}
+<style>
+.jumbotron {
+  font-size : 100px;
+  background-color : black;
+  color : red;
+  border : 7px solid red;
+  border-radius : 60px;
+}
+.r1 {
+  border : 3px solid black;
+
+}
+</style>
+
+Base Page
+<table>
+  <th>City</th>
+  <th>Temp</th>
+  <th>Date</th>
+  <th>Time</th>
+  <th>Date Made</th>
+{% for fcast in forecasts %}
+<div class = "container">
+  <tr class = "rx">
+
+<td class = "r1">{{fcast.location}}</td>
+<td class = "r1">{{fcast.high}} degrees </td>
+<td class = "r1">{{fcast.low}} degrees </td>
+<td class = "r1">{{fcast.date|date:"D M d Y"}}</td>
+<td class = "r1">{{fcast.date_made|date:"D M d Y"}}</td>
+
+</tr>
+</div>
+{% endfor %}
+</table>
+
+
+{% endblock %}

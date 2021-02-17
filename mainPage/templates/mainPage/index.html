@@ -1,0 +1,147 @@
+{% extends "mainPage/base.html" %}
+{% block body_block %}
+{% load convert %}
+<style>
+test {
+  font-size : 100px;
+  background-color : black;
+  color : red;
+  border : 7px solid red;
+  border-radius : 60px;
+}
+.r1 {
+  border : 3px solid black;
+
+}
+.hd {
+  text-align: left;
+}
+.top {
+  text-align: center;
+}
+</style>
+<div class = "container top">
+<h1>Welcome to Weather Arrow</h1>
+
+<p>
+This website collects data from OpenWeatherMap and then displays the recent forecasts so you can see how it changes.
+The website provides several ways to view this data.
+
+</p>
+<br>
+
+
+
+
+<h1 class = "hd">  History</h1>
+<p>  By using the dropdown below you can choose a city and see all the recent 7 day forecast and view how they have changed.
+  The data will be displayed as a list of tables for each date to see. The page can be reached by the link at the top as well.
+</p>
+
+
+<form class="" action="{% url 'mainPage:history' %}" method="POST">
+  {% csrf_token %}
+<select name = "city">
+<option value = "Dallas">Dallas</option>
+<option value = "New York City">New York City</option>
+<option value = "Houston">Houston</option>
+<option value = "Miami">Miami</option>
+<option value = "Seattle">Seattle</option>
+<option value = "Houston">Houston</option>
+<option value = "Los Angeles">Los Angeles</option>
+</select>
+<button method="get">
+  Submit
+</button>
+
+</form>
+
+
+<br>
+<h1 class = "hd">  Compare</h1>
+<p>  By using the dropdown below you can choose a city and see all the recent 7 day forecast and view how they have changed.
+  The data will display in a table all together with each day next to each other .The page can be reached by the link at the top as well.
+</p>
+
+
+<form class="" action="{% url 'mainPage:compare' %}" method="POST">
+  {% csrf_token %}
+<select name = "city">
+<option value = "Dallas">Dallas</option>
+<option value = "New York City">New York City</option>
+<option value = "Houston">Houston</option>
+<option value = "Miami">Miami</option>
+<option value = "Seattle">Seattle</option>
+<option value = "Houston">Houston</option>
+<option value = "Los Angeles">Los Angeles</option>
+</select>
+<button method="get">
+  Submit
+</button>
+
+</form>
+
+
+
+
+
+
+
+
+
+
+
+<br>
+<br>
+<h1 class = "hd">Today</h1>
+<p>
+The Today Tab at the top will take you to all the forecast for Today and list them all. You can then filter it to the city you would like.
+You can use the dropdown below to select a city before you go to the page.
+
+
+</p>
+<form class="" action= "{% url 'mainPage:todayF' %}" method="POST">
+{% csrf_token %}
+<select name = "city">
+<option value = "Dallas">Dallas</option>
+<option value = "New York City">New York City</option>
+<option value = "Houston">Houston</option>
+<option value = "Miami">Miami</option>
+<option value = "Seattle">Seattle</option>
+<option value = "Houston">Houston</option>
+<option value = "Los Angeles">Los Angeles</option>
+</select>
+<button method="POST">
+  Submit
+</button>
+
+</form>
+
+<h1 class = "hd">All</h1>
+<p>
+The Today Tab at the top will take you to all the forecast for Today and list them all. Use the dropdown to select what city's weather you would like. You can use the link above.
+
+
+</p>
+<form class="" action= "{% url 'mainPage:todayS' %}" method="POST">
+{% csrf_token %}
+<select name = "city">
+<option value = "Dallas">Dallas</option>
+<option value = "New York City">New York City</option>
+<option value = "Houston">Houston</option>
+<option value = "Miami">Miami</option>
+<option value = "Seattle">Seattle</option>
+<option value = "Houston">Houston</option>
+<option value = "Los Angeles">Los Angeles</option>
+</select>
+<button method="get">
+  Submit
+</button>
+
+</form>
+
+
+</div>
+
+
+{% endblock %}

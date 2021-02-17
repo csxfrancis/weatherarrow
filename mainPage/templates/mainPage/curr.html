@@ -1,0 +1,48 @@
+{% extends "mainPage/base.html" %}
+{% block body_block %}
+{% load convert %}
+<style>
+#hd {
+  font-size : 40px;
+  background-color : blue;
+}
+.r1 {
+  text-align : center;
+  font-size : 15px;
+  background-color : black;
+  color : cyan;
+
+
+}
+.r2 {
+  text-align : center;
+  font-size : 15px;
+  background-color : cyan;
+  color : black;
+}
+</style>
+<div>
+<h1 id= "hd">Weather Arrow</h1>
+  </div>
+<h1>Today in Dallas</h1>
+<table>
+  <th>City</th>
+  <th>Date</th>
+  <th>Max</th>
+  <th>Low</th>
+  <th>Date Cast</th>
+  <th>Date Made</th>
+{% for fcast in forecasts %}
+<div class = "container">
+  <tr class = "rx">
+
+<td class = "r1">{{fcast.location}}</td>
+<td class = "r2">{{fcast.high}} degrees </td>
+<td class = "r2">{{fcast.low}} degrees </td>
+<td class = "r1">{{fcast.date|date:"D M d Y"}}</td>
+<td class = "r1">{{fcast.date_made|date:"D M d Y"}}</td>
+
+</tr>
+</div>
+{% endfor %}
+</table>

@@ -1,0 +1,20 @@
+
+Dallas
+32.7767N
+96.7970W
+
+Houston
+29.7604N
+95.3698W
+
+NYC
+40.7128° N, 74.0060° W
+
+Miami
+25.7617° N, 80.1918° W
+
+Los Angeles/Coordinates
+34.0522° N, 118.2437° W
+
+Seattle/Coordinates
+47.6062° N, 122.3321° W

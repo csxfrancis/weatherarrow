@@ -1,0 +1,46 @@
+{% extends "mainPage/base.html" %}
+{% block body_block %}
+{% load convert %}
+<style>
+test {
+  font-size : 100px;
+  background-color : black;
+  color : red;
+  border : 7px solid red;
+  border-radius : 60px;
+}
+td {
+  text-align: center;
+  border : 3px solid black;
+}
+.r1 {
+  border : 3px solid black;
+
+}
+</style>
+<div class = "container">
+<h1 class = "jumbotron">Welcome to Weather Arrow</h1>
+
+
+<table>
+  <th>Date</th>
+  <th>Date Made</th>
+  <th>High</th>
+  <th>Low</th>
+  <th>Location</th>
+{% for cast in forecasts %}
+
+<tr>
+  <td>{{cast.date}}</td>
+  <td>{{cast.date_made}}</td>
+  <td>{{cast.high}} Degrees </td>
+  <td>{{cast.low}} Degrees </td>
+  <td>{{cast.location}} </td>
+</tr>
+
+{% endfor %}
+</table>
+</div>
+
+
+{% endblock %}
