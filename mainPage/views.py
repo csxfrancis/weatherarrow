@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.contrib.auth import authenticate,login,logout
 from django.http import HttpResponseRedirect,HttpResponse
 from django.urls import reverse
+from datetime import timedelta
 from django.contrib.auth.decorators import login_required
 from mainPage.models import Forecast
 from datetime import date
@@ -19,37 +20,47 @@ def index(request):
     forecast_list = {"forecasts":forecasts}
     return render(request,'mainPage/index.html',context=forecast_list)
 def todayFilter(request):
+        cday = date.today()
+
         if(request.method ==  "POST"):
 
             city = request.POST.get('city')
-            forecasts = Forecast.objects.filter(location=city).filter(date=date.today())
+            forecasts = Forecast.objects.filter(location=city).filter(date=cday)
 
         else:
-            forecasts = Forecast.objects.order_by('location').filter(date=date.today())
+            forecasts = Forecast.objects.order_by('location').filter(date=cday)
 
         forecast_list = {"forecasts":forecasts}
         return render(request,'mainPage/today.html',forecast_list)
 def today(request):
     check = False
-    print(request.method)
+    cday = date.today()
     if(request.method ==  "POST"):
 
         city = request.POST.get('city')
         print(city)
+        #cday =  date.today()
 
-        forecasts = Forecast.objects.filter(location=city).filter(date=date.today()).order_by('-date_made')
+        forecasts = Forecast.objects.filter(location=city).filter(date=cday).order_by('-date_made')
+
     else:
         city  = "Dallas"
         check = True
-        forecasts = Forecast.objects.filter(location=city).filter(date=date.today()).order_by('-date_made')
+        forecasts = Forecast.objects.filter(location=city).filter(date=cday).order_by('-date_made')
+    print(len(forecasts))
+    if(len(forecasts)<8):
+        cday = cday - timedelta(days=1)
+        forecasts = Forecast.objects.filter(location=city).filter(date=cday).order_by('-date_made')
 
-
-    top = forecasts.filter(date_made=date.today())[0]
+    top = forecasts.filter(date_made=cday)[0]
     forecast_list = {"forecasts":forecasts,"top":top,"check":check}
     return render(request,'mainPage/today.html',forecast_list)
 def todayB(request):
+    cday = date.today()
 
-    forecasts = Forecast.objects.order_by('location').filter(date=date.today()).order_by('location')
+    forecasts = Forecast.objects.order_by('location').filter(date=cday).order_by('location')
+    if(len(forecasts)<8):
+        forecasts = Forecast.objects.filter(location=city).filter(date=cday.replace(cday-timedelta(days=1))).order_by('-date_made')
 
     forecast_list = {"forecasts":forecasts}
     return render(request,'mainPage/today.html',forecast_list)
@@ -60,12 +71,13 @@ def all(request):
 def compare(request):
     city = "Dallas"
     check = False
+    cday = date.today()
     if(request.method ==  "POST"):
         check = True
         print('testing')
         city = request.POST.get('city')
         print(city)
-    forecasts = Forecast.objects.filter(location=city).filter(date__gte=date.today()).order_by('date')
+    forecasts = Forecast.objects.filter(location=city).filter(date__gte=cday).order_by('date')
 
     keys = []
     coll = {}
@@ -92,12 +104,13 @@ def compare(request):
 def history(request):
     city = "Dallas"
     check = False
+    cday = date.today()
     if(request.method ==  "POST"):
         check = True
         print('testing')
         city = request.POST.get('city')
         print(city)
-    forecasts = Forecast.objects.filter(location=city).filter(date__gte=date.today()).order_by('date')
+    forecasts = Forecast.objects.filter(location=city).filter(date__gte=cday).order_by('date')
 
     keys = []
     coll = {}
