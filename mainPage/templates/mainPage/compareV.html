@@ -5,6 +5,10 @@
 th,td {
   text-align : center;
 }
+.pic {
+  height: 400px;
+  width: 500px;
+}
 #hd {
   font-size : 40px;
   background-color : blue;
@@ -90,6 +94,38 @@ th,td {
 </div>
 {% else %}
 <h2>Compare</h2>
+<form class = "" action = "{% url 'mainPage:history' %}" method="POST">
+{% csrf_token  %}
+<div class="container">
+
+<div class = "row">
+<button class = "col-lg-6" name = "city" value = "Dallas">
+<img class = "pic" src="https://live.staticflickr.com/170/471774454_179e3b2212_b.jpg" alt="Dallas skyline from Trinity Overlook Park"><a href="https://www.flickr.com/photos/56181704@N00/471774454">"Dallas skyline from Trinity Overlook Park"</a><span> by <a href="https://www.flickr.com/photos/56181704@N00">dph1110</a></span> is licensed under <a href="https://creativecommons.org/licenses/by/2.0/?ref=ccsearch&atype=html" style="margin-right: 5px;">CC BY 2.0</a><a href="https://creativecommons.org/licenses/by/2.0/?ref=ccsearch&atype=html" target="_blank"><img style="height: inherit;margin-right: 3px;display: inline-block;" src="https://search.creativecommons.org/static/img/cc_icon.svg?image_id=e591d813-d571-45cf-a51b-8eaeb566f4bd" /><img style="height: inherit;margin-right: 3px;display: inline-block;" src="https://search.creativecommons.org/static/img/cc-by_icon.svg" /></a>
+</button>
+<button class = "col-lg-6" name = "city" value = "Houston">
+<img class = "pic" src="https://live.staticflickr.com/4/4803461_2a14d12c19.jpg" alt="Houston Skyline"><a href="https://www.flickr.com/photos/41894183508@N01/4803461">"Houston Skyline"</a><span> by <a href="https://www.flickr.com/photos/41894183508@N01">mrbill</a></span> is licensed under <a href="https://creativecommons.org/licenses/by/2.0/?ref=ccsearch&atype=html" style="margin-right: 5px;">CC BY 2.0</a><a href="https://creativecommons.org/licenses/by/2.0/?ref=ccsearch&atype=html" target="_blank"><img  src="https://search.creativecommons.org/static/img/cc_icon.svg?image_id=03a2584d-1a42-4d11-bb7b-a45128134fda" /><img src="https://search.creativecommons.org/static/img/cc-by_icon.svg" /></a>
+</button>
+</div>
+<div class = "row">
+<button class = "col-lg-6" name = "city" value = "Seattle">
+<img class = "pic" src="https://live.staticflickr.com/3063/2873456365_205760c59b_b.jpg" alt="Seattle Skyline"><a href="https://www.flickr.com/photos/21442511@N08/2873456365">"Seattle Skyline"</a><span> by <a href="https://www.flickr.com/photos/21442511@N08">jdnx</a></span> is licensed under <a href="https://creativecommons.org/licenses/by/2.0/?ref=ccsearch&atype=html" style="margin-right: 5px;">CC BY 2.0</a><a href="https://creativecommons.org/licenses/by/2.0/?ref=ccsearch&atype=html" target="_blank" rel="noopener noreferrer" style="display: inline-block;white-space: none;margin-top: 2px;margin-left: 3px;height: 22px !important;"><img style="height: inherit;margin-right: 3px;display: inline-block;" src="https://search.creativecommons.org/static/img/cc_icon.svg?image_id=80df75ec-4620-492e-a947-df7c4f970058" /><img style="height: inherit;margin-right: 3px;display: inline-block;" src="https://search.creativecommons.org/static/img/cc-by_icon.svg" /></a>
+</button>
+<button class = "col-lg-6" name = "city" value = "New York City">
+  <img class = "pic" src="https://live.staticflickr.com/3712/13944692233_e881fc7eef_b.jpg" alt="New York City Skyline at Blue Hour from the Top of the Rock HDR"><a href="https://www.flickr.com/photos/76771463@N02/13944692233">"New York City Skyline at Blue Hour from the Top of the Rock HDR"</a><span> by <a href="https://www.flickr.com/photos/76771463@N02">Katie Haugland Bowen</a></span> is licensed under <a href="https://creativecommons.org/licenses/by/2.0/?ref=ccsearch&atype=html" style="margin-right: 5px;">CC BY 2.0</a><a href="https://creativecommons.org/licenses/by/2.0/?ref=ccsearch&atype=html" target="_blank" rel="noopener noreferrer" style="display: inline-block;white-space: none;margin-top: 2px;margin-left: 3px;height: 22px !important;"><img style="height: inherit;margin-right: 3px;display: inline-block;" src="https://search.creativecommons.org/static/img/cc_icon.svg?image_id=3f8a248a-ac40-44be-80b5-9fc8697f9247" /><img style="height: inherit;margin-right: 3px;display: inline-block;" src="https://search.creativecommons.org/static/img/cc-by_icon.svg" /></a>
+  </button>
+  </div>
+  <div class = "row">
+  <button class = "col-lg-6" name = "city" value = "Miami">
+    <img class = "pic" src="https://live.staticflickr.com/7314/10218708715_b3668a1f84_b.jpg" alt="Miami Skyline 2"><a href="https://www.flickr.com/photos/48884609@N07/10218708715">"Miami Skyline 2"</a><span> by <a href="https://www.flickr.com/photos/48884609@N07">gabrielkaplan</a></span> is licensed under <a href="https://creativecommons.org/licenses/by/2.0/?ref=ccsearch&atype=html" style="margin-right: 5px;">CC BY 2.0</a><a href="https://creativecommons.org/licenses/by/2.0/?ref=ccsearch&atype=html" target="_blank" style="display: inline-block;white-space: none;margin-top: 2px;margin-left: 3px;height: 22px !important;"><img style="height: inherit;margin-right: 3px;display: inline-block;" src="https://search.creativecommons.org/static/img/cc_icon.svg?image_id=5ad3d05a-506e-4966-b2f9-ead75077f306" /><img style="height: inherit;margin-right: 3px;display: inline-block;" src="https://search.creativecommons.org/static/img/cc-by_icon.svg" /></a>
+    </button>
+    <button class = "col-lg-6" name = "city" value = "Los Angeles">
+      <img class = "pic" src="https://live.staticflickr.com/3130/2335934841_740f19c8c1_b.jpg" alt="Los Angeles Skyline in the rain"><a href="https://www.flickr.com/photos/66148700@N00/2335934841">"Los Angeles Skyline in the rain"</a><span> by <a href="https://www.flickr.com/photos/66148700@N00">RodneyRamsey</a></span> is licensed under <a href="https://creativecommons.org/licenses/by/2.0/?ref=ccsearch&atype=html" style="margin-right: 5px;">CC BY 2.0</a><a href="https://creativecommons.org/licenses/by/2.0/?ref=ccsearch&atype=html" target="_blank" rel="noopener noreferrer" style="display: inline-block;white-space: none;margin-top: 2px;margin-left: 3px;height: 22px !important;"><img style="height: inherit;margin-right: 3px;display: inline-block;" src="https://search.creativecommons.org/static/img/cc_icon.svg?image_id=099c06e4-6d50-436c-b62c-95b68dbea8b8" /><img style="height: inherit;margin-right: 3px;display: inline-block;" src="https://search.creativecommons.org/static/img/cc-by_icon.svg" /></a>
+      </button>
+</div>
+</div>
+</form>
+
+
 <p>Please use the dropdown below to select the city you would to see the forecast history. Each day will have a list of the previous forecasts.</p>
 {% endif %}
 
@@ -107,7 +143,6 @@ th,td {
 <button method="get">
   Submit
 </button>
-
 </form>
 
 
