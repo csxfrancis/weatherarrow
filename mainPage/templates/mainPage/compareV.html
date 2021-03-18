@@ -93,7 +93,7 @@ th,td {
 
 </div>
 {% else %}
-<h2>Compare</h2>
+<h2>History</h2>
 <form class = "" action = "{% url 'mainPage:history' %}" method="POST">
 {% csrf_token  %}
 <div class="container">
@@ -124,7 +124,6 @@ th,td {
 </div>
 </div>
 </form>
-
 
 <p>Please use the dropdown below to select the city you would to see the forecast history. Each day will have a list of the previous forecasts.</p>
 {% endif %}
